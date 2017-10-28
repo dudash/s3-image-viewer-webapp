@@ -1,0 +1,32 @@
+{
+  "name": "s3-image-viewer-webapp",
+  "version": "0.0.0",
+  "description": "An AWS S3 Image Viewer",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dudash/s3-image-viewer-webapp"
+  },
+  "keywords": [
+    "node",
+    "AWS",
+    "S3"
+  ],
+  "author": "Jason Dudash",
+  "contributors": [
+    "Jason Dudash <jason.dudash@gmailcom>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "~2.4.5"
+  }
+}
