@@ -23,15 +23,15 @@ block content
               span(title='Help', class='fa pficon-help')
               span(class='caret')
             ul(class='dropdown-menu', aria-labelledby='dropdownMenu1')
-              li: a(href='#0') About
+              li: a(href='/about') About
         ul.nav.navbar-nav.navbar-primary
           - var bucketsArray = JSON.parse(buckets);
           if bucketsArray.length < 1
-            // toasts aren't sizing correctly or using normal fonts???
-            //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
-            //  button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
-            //    span.pficon.pficon-close
-            //  span.pficon.pficon-warning-triangle-o No buckets have been configured
+            .toast-pf.toast-pf-top-right.alert-warning.alert-dismissable.alert
+              button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
+                span.pficon.pficon-close
+              span.pficon.pficon-warning-triangle-o
+              | No buckets have been configured
             li
               a(href='#0')
                 span(class='pficon pficon-warning-triangle-o' data-toggle='tooltip' title='NONE')
@@ -39,35 +39,38 @@ block content
           else
             each bucketIter in bucketsArray ? bucketsArray: ['No Buckets!']
               li
-                a(href='#0')
-                  span(class='fa fa-bitbucket' data-toggle='tooltip' title=!{bucketIter})
-                  span(class='list-group-item-value') !{bucketIter}
+                a(href='/?showBucket='+ bucketIter)
+                  span(class='fa fa-bitbucket' data-toggle='tooltip' title=bucketIter)
+                  span(class='list-group-item-value') #{bucketIter}
 
   .container-fluid.container-cards-pf
     br
     p Welcome to #{title} - things are under construction here, YYMV
 
-    .row.row-cards-pf
-      - var imagesArray = JSON.parse(images);
-      if imagesArray.length < 1
-        // toasts aren't sizing correctly or using normal fonts???
-        //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
-        //  button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
-        //    span.pficon.pficon-close
-        //  span.fa.fa-ban No images found.
-        .blank-slate-pf
-          .blank-slate-pf-icon
-            .fa.fa-ban
-            p #[strong No Images Found]
-      else
-        each imageUrl in imagesArray ? imagesArray: ['DANGER-WILL-ROBINSON']
-          div(class='col-xs-12 col-sm-6 col-md-4 col-lg-3')
-            div(class='card-pf card-pf-view')
-              div(class='card-pf-body')
-                div(class='card-pf-top-element')
-                  a(href='#TODO')
-                    img(src='/images/dummybox.png', alt='dummybox', style='max-height: 100%; width: 100%; object-fit: contain')
-                h2(class='card-pf-title text-center') #{imageUrl}
+    - var imagesArray = JSON.parse(images);
+    if imagesArray.length < 1
+      .toast-pf.toast-pf-top-right.alert-warning.alert-dismissable.alert
+        button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
+          span.pficon.pficon-close
+        span.pficon.pficon-warning-triangle-o
+        | No images found
+      .blank-slate-pf
+        .blank-slate-pf-icon
+          .fa.fa-ban
+          p #[strong No Images Found]
+    else
+      .row.row-cards-pf
+      each imageUrl in imagesArray ? imagesArray: ['DANGER-WILL-ROBINSON']
+        //.col-xs-12.col-sm-6.col-md-4.col-lg-3
+        .col-xs-12.col-sm-4.col-md-3.col-lg-2
+          .card-pf.card-pf-view
+            .card-pf-body
+              .card-pf-top-element
+                  img(src=imageUrl, alt='Image', style='max-height: 100%; width: 100%; object-fit: contain')
+              //.card-pf-title.text-center #{imageUrl}
+              .card-pf-items.text-center
+                a(href=imageUrl)
+                  span.fa.fa-arrow-circle-o-down.fa-2x
     
   script(type='text/javascript').
     $(document).ready(function() {
