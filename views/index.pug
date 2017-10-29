@@ -25,15 +25,16 @@ block content
             ul(class='dropdown-menu', aria-labelledby='dropdownMenu1')
               li: a(href='#0') About
         ul.nav.navbar-nav.navbar-primary
-          - var bucketsArray = JSON.parse(buckets)
+          - var bucketsArray = JSON.parse(buckets); // ['Bucket', 'Bucket'];
           if bucketsArray.length < 1
+            // toasts aren't sizing correctly or using normal fonts???
             //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
             //  button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
             //    span.pficon.pficon-close
             //  span.pficon.pficon-warning-triangle-o No buckets have been configured
             li
               a(href='#0')
-                span(class='pficon-warning-triangle-o' data-toggle='tooltip' title='NONE')
+                span(class='pficon pficon-warning-triangle-o' data-toggle='tooltip' title='NONE')
                 span(class='list-group-item-value') #[em   NO BUCKETS]
           else
             each bucketIter in bucketsArray ? bucketsArray: ['No Buckets!']
@@ -47,13 +48,17 @@ block content
     p Welcome to #{title} - things are under construction here, YYMV
 
     .row.row-cards-pf
-      - var imagesArray = ['XXXX', 'YYYY', 'ZZZZ', 'AAAA', 'BBBB', 'CCCC', 'DDDD', 'EEEE', 'FFFF', 'GGGG'];
+      - var imagesArray = JSON.parse(images); //['XXXX', 'YYYY', 'ZZZZ', 'AAAA', 'BBBB', 'CCCC', 'DDDD', 'EEEE', 'FFFF', 'GGGG'];
       if imagesArray.length < 1
+        // toasts aren't sizing correctly or using normal fonts???
         //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
         //  button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
         //    span.pficon.pficon-close
-        //  span.pficon.pficon-warning-triangle-o No images found.
-        p #[strong No Images]
+        //  span.fa.fa-ban No images found.
+        .blank-slate-pf
+          .blank-slate-pf-icon
+            .fa.fa-ban
+            p #[strong No Images Found]
       else
         each imageUrl in imagesArray ? imagesArray: ['DANGER-WILL-ROBINSON']
           div(class='col-xs-12 col-sm-6 col-md-4 col-lg-3')
