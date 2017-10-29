@@ -1,0 +1,26 @@
+{
+  "name": "s3-image-viewer-webapp",
+  "description": "An AWS S3 Image Viewer",
+  "main": "app.js",
+  "authors": [
+    "Jason Dudash <jason.dudash@gmailcom>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "AWS",
+    "S3"
+  ],
+  "homepage": "https://github.com/dudash/s3-image-viewer-webapp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "patternfly": "^3.29.8"
+  }
+}
