@@ -1,6 +1,10 @@
 # S3 Image Viewer App
+It's a pretty basic webapp that formats and showcases a list of images from an AWS S3 bucket.
 
-COMING SOON - WORKING ON GETTING THE CODE UP HERE
+## THIS IS IN-WORK, YMMV.
+
+Here's a screenshot:
+![Screenshot](./.screens/2017-10-28.png)
 
 ## About the code
 It's node.js it talks to S3 and it uses [patternfly](http://www.patternfly.org/) for the UI.

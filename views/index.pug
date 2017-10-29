@@ -25,7 +25,7 @@ block content
             ul(class='dropdown-menu', aria-labelledby='dropdownMenu1')
               li: a(href='#0') About
         ul.nav.navbar-nav.navbar-primary
-          - var bucketsArray = JSON.parse(buckets); // ['Bucket', 'Bucket'];
+          - var bucketsArray = JSON.parse(buckets);
           if bucketsArray.length < 1
             // toasts aren't sizing correctly or using normal fonts???
             //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
@@ -48,7 +48,7 @@ block content
     p Welcome to #{title} - things are under construction here, YYMV
 
     .row.row-cards-pf
-      - var imagesArray = JSON.parse(images); //['XXXX', 'YYYY', 'ZZZZ', 'AAAA', 'BBBB', 'CCCC', 'DDDD', 'EEEE', 'FFFF', 'GGGG'];
+      - var imagesArray = JSON.parse(images);
       if imagesArray.length < 1
         // toasts aren't sizing correctly or using normal fonts???
         //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
