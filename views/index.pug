@@ -1,5 +1,85 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  script(src='/bower_components/c3/c3.min.js')
+  script(src='/bower_components/d3/d3.min.js')
+  script(src='/bower_components/matchHeight/dist/jquery.matchHeight-min.js')
+
+  .layout-pf.layout-pf-fixed
+    nav(class='navbar navbar-pf', role='navigation')
+      .navbar-header
+        button(type='button' class='navbar-toggle' data-target='.navbar-collapse-1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a(href='/', class='navbar-brand')
+          //img(class='navbar-brand-icon', src='/bower_components/patternfly/dist/img/logo-alt.svg', alt='')
+          img(class='navbar-brand-name', alt='AWS S3 Image Viewer')
+      .collapse.navbar-collapse.navbar-collapse-1
+        ul.nav.navbar-nav.navbar-right.navbar-utility
+          li.dropdown
+            a(href='#0', class='dropdown-toggle nav-item-iconic' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true')
+              span(title='Help', class='fa pficon-help')
+              span(class='caret')
+            ul(class='dropdown-menu', aria-labelledby='dropdownMenu1')
+              li: a(href='#0') About
+        ul.nav.navbar-nav.navbar-primary
+          - var bucketsArray = JSON.parse(buckets);
+          if bucketsArray.length < 1
+            // toasts aren't sizing correctly or using normal fonts???
+            //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
+            //  button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
+            //    span.pficon.pficon-close
+            //  span.pficon.pficon-warning-triangle-o No buckets have been configured
+            li
+              a(href='#0')
+                span(class='pficon pficon-warning-triangle-o' data-toggle='tooltip' title='NONE')
+                span(class='list-group-item-value') #[em   NO BUCKETS]
+          else
+            each bucketIter in bucketsArray ? bucketsArray: ['No Buckets!']
+              li
+                a(href='#0')
+                  span(class='fa fa-bitbucket' data-toggle='tooltip' title=!{bucketIter})
+                  span(class='list-group-item-value') !{bucketIter}
+
+  .container-fluid.container-cards-pf
+    br
+    p Welcome to #{title} - things are under construction here, YYMV
+
+    .row.row-cards-pf
+      - var imagesArray = JSON.parse(images);
+      if imagesArray.length < 1
+        // toasts aren't sizing correctly or using normal fonts???
+        //.toast-pf.toast-pf-top-right.alert.alert-danger.alert-dismissable
+        //  button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
+        //    span.pficon.pficon-close
+        //  span.fa.fa-ban No images found.
+        .blank-slate-pf
+          .blank-slate-pf-icon
+            .fa.fa-ban
+            p #[strong No Images Found]
+      else
+        each imageUrl in imagesArray ? imagesArray: ['DANGER-WILL-ROBINSON']
+          div(class='col-xs-12 col-sm-6 col-md-4 col-lg-3')
+            div(class='card-pf card-pf-view')
+              div(class='card-pf-body')
+                div(class='card-pf-top-element')
+                  a(href='#TODO')
+                    img(src='/images/dummybox.png', alt='dummybox', style='max-height: 100%; width: 100%; object-fit: contain')
+                h2(class='card-pf-title text-center') #{imageUrl}
+    
+  script(type='text/javascript').
+    $(document).ready(function() {
+      // matchHeight the contents of each .card-pf and then the .card-pf itself
+      $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+      $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+      $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+      $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
+
+      // initialize tooltips
+      $('[data-toggle="tooltip"]').tooltip();
+
+      // Initialize the vertical navigation
+      $().setupVerticalNavigation(true);
+    });
