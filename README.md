@@ -13,6 +13,9 @@ It's node.js it talks to S3 and it uses [patternfly](http://www.patternfly.org/)
 1. ```npm install```
 2. ```npm start```
 
+### On OpenShift
+```oc new-app https://github.com/dudash/s3-image-viewer-webapp.git```
+
 You will need to a few environment variables to point your service to your AWS S3 source and configure preferences.
 * Bucket Names - TBD
 * Image Extension Filtering - TBD

@@ -8,7 +8,7 @@ block content
   .layout-pf.layout-pf-fixed
     nav(class='navbar navbar-pf', role='navigation')
       .navbar-header
-        button(type='button' class='navbar-toggle' data-target='.navbar-collapse-1')
+        button(type='button' class='navbar-toggle' data-target='navbar-collapse-1')
           span.sr-only Toggle navigation
           span.icon-bar
           span.icon-bar
@@ -41,19 +41,13 @@ block content
               li
                 a(href='/?showBucket='+ bucketIter)
                   span(class='fa fa-bitbucket' data-toggle='tooltip' title=bucketIter)
-                  span(class='list-group-item-value') #{bucketIter}
+                  span(class='list-group-item-value') #[  #{bucketIter}]
 
   .container-fluid.container-cards-pf
     br
-    p Welcome to #{title} - things are under construction here, YYMV
-
+    p Welcome to #{title} - you are viewing S3 bucket #[strong #{showBucket}]
     - var imagesArray = JSON.parse(images);
     if imagesArray.length < 1
-      .toast-pf.toast-pf-top-right.alert-info.alert-dismissable.alert
-        button(type='button' class='close' data-dismiss='alert' aria-hidden='true')
-          span.pficon.pficon-close
-        span.pficon.pficon-info
-        | No images found
       .blank-slate-pf
         .blank-slate-pf-icon
           .fa.fa-ban
