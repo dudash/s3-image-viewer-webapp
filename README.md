@@ -4,7 +4,7 @@ It's a pretty basic webapp that formats and showcases a list of images from an A
 ## THIS IS IN-WORK, YMMV.
 
 Here's a screenshot:
-![Screenshot](./.screens/2017-10-28.png)
+![Screenshot](./.screens/2017-10-31.png)
 
 ## About the code
 It's node.js it talks to S3 and it uses [patternfly](http://www.patternfly.org/) for the UI.
