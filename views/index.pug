@@ -70,7 +70,7 @@ block content
           .card-pf.card-pf-view
             .card-pf-body
               .card-pf-top-element
-                  img(src=imageUrl, alt='Image', style='max-height: 100%; width: 100%; object-fit: contain')
+                  img(src=imageUrl, alt='Image could not be rendered', style='max-height: 100%; width: 100%; object-fit: contain')
               //.card-pf-title.text-center #{imageUrl}
               .card-pf-items.text-center
                 a(href=imageUrl)
@@ -93,10 +93,11 @@ block content
                     label(class='col-sm-2 control-label' for='textInput-markup') Name
                     .col-sm-10
                       input(type='text' name='bucketNameTextInput' id='bucketNameTextInput' data-id='textInput-markup' class='form-control')
+              h4 Currently working on adding buckets dynamically, for now please use ENV vars
 
         .modal-footer.wizard-pf-footer
           button(type='button' class='btn btn-default btn-cancel wizard-pf-cancel wizard-pf-dismiss') Cancel
-          button(type='button' class='btn btn-primary wizard-pf-add') Add
+          button(type='button' class='btn btn-primary wizard-pf-add disabled') Add
 
   script(type='text/javascript').
     $(document).ready(function() {
