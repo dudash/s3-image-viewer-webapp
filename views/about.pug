@@ -1,0 +1,31 @@
+extends layout
+
+block nav
+  .layout-pf.layout-pf-fixed
+    nav(class='navbar navbar-pf', role='navigation')
+      .navbar-header
+        button(type='button' class='navbar-toggle' data-target='navbarCollapseId1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a(href='/', class='navbar-brand')
+          //img(class='navbar-brand-icon', src='/bower_components/patternfly/dist/img/logo-alt.svg', alt='')
+          img(class='navbar-brand-name', alt='AWS S3 Image Viewer')
+      #navbarCollapseId1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right.navbar-utility
+          li.dropdown
+            a(href='#0', class='dropdown-toggle nav-item-iconic' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true')
+              span(title='Help', class='pficon pficon-help fa-2x')
+              span(class='caret')
+            ul(class='dropdown-menu', aria-labelledby='dropdownMenu1')
+              li: a(href='/') Back to images
+block content
+    .container
+      .container-fluid
+        h1= title
+        .alert.alert-info
+          .pficon.pficon-info 
+          p
+            strong Thanks for using this webapp   #[a(href='https://github.com/dudash/s3-image-viewer-webapp') Check it out on github]
+
