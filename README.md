@@ -1,8 +1,6 @@
 # S3 Image Viewer App
 It's a pretty basic webapp that formats and showcases a list of images from an AWS S3 bucket.
 
-## THIS IS IN-WORK, YMMV.
-
 Here's a screenshot:
 ![Screenshot](./.screens/2017-10-31.png)
 
